@@ -9,12 +9,16 @@
 </head>
 
 <body>
+
     <header>
         <h1>Study Planner</h1>
         <p>بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</p>
+
+        <button id="darkModeButton">Dark Mode</button>
     </header>
 
     <main>
+
         <section class="task-list">
             <h2>My Tasks</h2>
 
@@ -25,6 +29,9 @@
                     <h3>Tugas Teori Graf</h3>
                     <p>Tugas Mingguan 1 dan 2</p>
                 </div>
+
+                <button class="edit-button">Edit</button>
+                <button class="delete-button">Delete</button>
             </div>
 
             <div class="task">
@@ -34,6 +41,9 @@
                     <h3>Tugas KPPL</h3>
                     <p>Resume IBM</p>
                 </div>
+
+                <button class="edit-button">Edit</button>
+                <button class="delete-button">Delete</button>
             </div>
 
             <div class="task">
@@ -43,6 +53,9 @@
                     <h3>Schematics</h3>
                     <p>Crosscheck kontak sekolah</p>
                 </div>
+
+                <button class="edit-button">Edit</button>
+                <button class="delete-button">Delete</button>
             </div>
 
             <div class="task">
@@ -52,6 +65,9 @@
                     <h3>Tugas Matematika Diskrit</h3>
                     <p>Predicate and Quantifier</p>
                 </div>
+
+                <button class="edit-button">Edit</button>
+                <button class="delete-button">Delete</button>
             </div>
 
         </section>
@@ -70,27 +86,33 @@
 
             <button>Save Task</button>
         </aside>
+
     </main>
 
     <section class="new-task">
         <h2>Create New Task</h2>
-        <form>
+
+        <form id="taskForm">
+
             <label>Task Name</label>
-            <input type="text" placeholder="Enter your task">
+            <input type="text" id="taskName" placeholder="Enter your task" required>
 
             <label>Description</label>
-            <textarea rows="4" placeholder="Enter task description"></textarea>
+            <textarea id="taskDescription" rows="4" placeholder="Enter task description" required></textarea>
 
             <label>Deadline</label>
-            <input type="date">
+            <input type="date" id="taskDeadline">
 
             <button type="submit">Add Task</button>
+
         </form>
     </section>
 
     <footer>
         <p>2026 Study Planner</p>
     </footer>
+
+    <script src="script.js"></script>
 
 </body>
 </html>

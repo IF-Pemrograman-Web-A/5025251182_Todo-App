@@ -49,7 +49,7 @@ h2 {
 .task {
     display: flex;
     align-items: flex-start;
-    gap: 12px;
+    gap: 10px;
 
     padding: 15px;
     margin-bottom: 12px;
@@ -73,6 +73,10 @@ h2 {
     margin: 0;
     font-size: 14px;
     color: #666;
+}
+
+.task div {
+    flex: 1;
 }
 
 label {
@@ -127,15 +131,78 @@ footer p {
     margin: 0;
 }
 
+.edit-button,
+.delete-button {
+    margin-top: 0;
+    padding: 7px 10px;
+    font-size: 12px;
+}
+
+.delete-button {
+    background-color: #c94c4c;
+}
+
+.delete-button:hover {
+    background-color: #a83d3d;
+}
+
+.task.completed h3,
+.task.completed p {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+body.dark-mode {
+    background-color: #222;
+    color: white;
+}
+
+body.dark-mode .task-list,
+body.dark-mode .task-detail,
+body.dark-mode .new-task {
+    background-color: #333;
+}
+
+body.dark-mode .task {
+    background-color: #444;
+    border-color: #666;
+}
+
+body.dark-mode .task h3 {
+    color: #ddd;
+}
+
+body.dark-mode .task p {
+    color: #ccc;
+}
+
+body.dark-mode h2 {
+    color: #c9a7ff;
+}
+
+#darkModeButton {
+    margin-top: 15px;
+    background-color: white;
+    color: #6a4c93;
+}
+
+#darkModeButton:hover {
+    background-color: #eee;
+}
+
 @media (max-width: 768px) {
+
     main {
         grid-template-columns: 1fr;
         padding: 15px;
     }
+
     .new-task {
         margin: 0 15px 15px;
     }
+
     header h1 {
         font-size: 26px;
     }
+
 }
