@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,102 +10,98 @@
 </head>
 
 <body>
-
     <header>
         <h1>Study Planner</h1>
         <p>بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</p>
 
-        <button id="darkModeButton">Dark Mode</button>
+        <button type="button" id="darkModeButton">
+            Dark Mode
+        </button>
     </header>
 
     <main>
-
-        <section class="task-list">
-            <h2>My Tasks</h2>
-
-            <div class="task">
-                <input type="checkbox">
-
-                <div>
-                    <h3>Tugas Teori Graf</h3>
-                    <p>Tugas Mingguan 1 dan 2</p>
-                </div>
-
-                <button class="edit-button">Edit</button>
-                <button class="delete-button">Delete</button>
+        <section class="task-list" aria-labelledby="taskListTitle">
+            <h2 id="taskListTitle">My Tasks</h2>
+            <div id="taskContainer" aria-live="polite">
             </div>
-
-            <div class="task">
-                <input type="checkbox">
-
-                <div>
-                    <h3>Tugas KPPL</h3>
-                    <p>Resume IBM</p>
-                </div>
-
-                <button class="edit-button">Edit</button>
-                <button class="delete-button">Delete</button>
-            </div>
-
-            <div class="task">
-                <input type="checkbox">
-
-                <div>
-                    <h3>Schematics</h3>
-                    <p>Crosscheck kontak sekolah</p>
-                </div>
-
-                <button class="edit-button">Edit</button>
-                <button class="delete-button">Delete</button>
-            </div>
-
-            <div class="task">
-                <input type="checkbox">
-
-                <div>
-                    <h3>Tugas Matematika Diskrit</h3>
-                    <p>Predicate and Quantifier</p>
-                </div>
-
-                <button class="edit-button">Edit</button>
-                <button class="delete-button">Delete</button>
-            </div>
-
         </section>
 
-        <aside class="task-detail">
-            <h2>Task Detail</h2>
-
-            <label>Task Name</label>
-            <input type="text" value="Tugas Teori Graf">
-
-            <label>Description</label>
-            <textarea rows="5">Tugas Mingguan 1 dan 2</textarea>
-
-            <label>Deadline</label>
-            <input type="date">
-
-            <button>Save Task</button>
+        <aside class="task-detail" aria-labelledby="detailTitle">
+            <h2 id="detailTitle">Task Detail</h2>
+            <label for="detailName">Task Name</label>
+            <input
+                type="text"
+                id="detailName"
+                readonly
+            >
+            <label for="detailDescription">Description</label>
+            <textarea
+                id="detailDescription"
+                rows="5"
+                readonly
+            ></textarea>
+            <label for="detailDeadline">Deadline</label>
+            <input
+                type="date"
+                id="detailDeadline"
+                readonly
+            >
         </aside>
-
     </main>
 
-    <section class="new-task">
-        <h2>Create New Task</h2>
+    <section class="new-task" aria-labelledby="newTaskTitle">
+        <h2 id="newTaskTitle">Create New Task</h2>
 
         <form id="taskForm">
+            <label for="taskName">
+                Task Name
+            </label>
+            <input
+                type="text"
+                id="taskName"
+                placeholder="Enter your task"
+                required
+            >
 
-            <label>Task Name</label>
-            <input type="text" id="taskName" placeholder="Enter your task" required>
+            <label for="taskDescription">
+                Description
+            </label>
+            <textarea
+                id="taskDescription"
+                rows="4"
+                placeholder="Enter task description"
+                required
+            ></textarea>
 
-            <label>Description</label>
-            <textarea id="taskDescription" rows="4" placeholder="Enter task description" required></textarea>
+            <label for="taskDeadline">
+                Deadline
+            </label>
+            <input
+                type="date"
+                id="taskDeadline"
+            >
 
-            <label>Deadline</label>
-            <input type="date" id="taskDeadline">
+            <label for="taskImage">
+                Task Image
+            </label>
+            <input
+                type="file"
+                id="taskImage"
+                accept="image/*"
+                capture="environment"
+            >
 
-            <button type="submit">Add Task</button>
+            <label for="notificationTime">
+                Notification Time
+            </label>
+            <input
+                type="datetime-local"
+                id="notificationTime"
+            >
 
+            <button type="submit">
+                Add Task
+            </button>
         </form>
     </section>
 
@@ -113,6 +110,5 @@
     </footer>
 
     <script src="script.js"></script>
-
 </body>
 </html>
