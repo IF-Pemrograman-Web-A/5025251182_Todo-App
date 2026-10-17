@@ -1,3 +1,37 @@
+<?php
+require_once "config.php";
+
+$page = $_GET['page'] ?? 'personal';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $title = trim($_POST['title'] ?? '');
+    $description = trim($_POST['description'] ?? '');
+    $deadline = $_POST['deadline'] ?? '';
+    $category = $_POST['category'] ?? 'personal';
+
+    if ($title !== '' && $description !== '') {
+        $stmt = $conn->prepare(
+            "INSERT INTO tasks (title, description, deadline, category)
+             VALUES (?, ?, NULLIF(?, ''), ?)"
+        );
+
+        $stmt->bind_param(
+            "ssss",
+            $title,
+            $description,
+            $deadline,
+            $category
+        );
+
+        $stmt->execute();
+        $stmt->close();
+
+        header("Location: index.php?page=" . urlencode($category));
+        exit;
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,12 +53,10 @@
         </button>
     </header>
 
+    <?php include "menu-bar.php"; ?>
+    
     <main>
-        <section class="task-list" aria-labelledby="taskListTitle">
-            <h2 id="taskListTitle">My Tasks</h2>
-            <div id="taskContainer" aria-live="polite">
-            </div>
-        </section>
+    <?php include "content.php"; ?>
 
         <aside class="task-detail" aria-labelledby="detailTitle">
             <h2 id="detailTitle">Task Detail</h2>
@@ -51,14 +83,15 @@
 
     <section class="new-task" aria-labelledby="newTaskTitle">
         <h2 id="newTaskTitle">Create New Task</h2>
-
-        <form id="taskForm">
+        
+        <form action="index.php" method="POST" id="taskForm">
             <label for="taskName">
                 Task Name
             </label>
             <input
                 type="text"
                 id="taskName"
+                name="title"
                 placeholder="Enter your task"
                 required
             >
@@ -68,6 +101,7 @@
             </label>
             <textarea
                 id="taskDescription"
+                name="description"
                 rows="4"
                 placeholder="Enter task description"
                 required
@@ -79,7 +113,16 @@
             <input
                 type="date"
                 id="taskDeadline"
+                name="deadline"
             >
+
+            <label for="taskCategory">
+                Category
+            </label>
+            <select id="taskCategory" name="category" required>
+                <option value="personal">Personal</option>
+                <option value="shared">Shared</option>
+            </select>
 
             <label for="taskImage">
                 Task Image
@@ -109,6 +152,10 @@
         <p>2026 Study Planner</p>
     </footer>
 
-    <script src="script.js"></script>
+<script>
+    document.getElementById("darkModeButton").addEventListener("click", function () {
+        document.body.classList.toggle("dark-mode");
+    });
+</script>
 </body>
 </html>
