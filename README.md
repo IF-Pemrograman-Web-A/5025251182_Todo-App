@@ -1,7 +1,7 @@
 Nama    : Yesenia Valencia Wibowo\
 NRP     : 5025251182
 
-Deskripsi : Web Todo List sebagai Study Planner mahasiswa dengan fitur CRUD Task, pilihan kategori Personal & Shared, deadline, dan Dark Mode. 
+Deskripsi : Web Todo List sebagai Study Planner mahasiswa dengan fitur CRUD Task, pilihan kategori Personal & Shared, deadline, dan Dark Mode dengan ungu as base warna website. 
 (HTML, CSS, JavaScript, PHP, dan MySQL)
 
 - Tampilan Default (Kategori Personal)
