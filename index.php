@@ -11,8 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($title !== '' && $description !== '') {
         $stmt = $conn->prepare(
-            "INSERT INTO tasks (title, description, deadline, category)
-             VALUES (?, ?, NULLIF(?, ''), ?)"
+            "INSERT INTO tasks (title, description, deadline, category) 
+            VALUES (?, ?, NULLIF(?, ''), ?)"
         );
 
         $stmt->bind_param(
@@ -41,6 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Study Planner</title>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#6a4c93">
 </head>
 
 <body>
@@ -50,6 +52,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <button type="button" id="darkModeButton">
             Dark Mode
+        </button>
+        <button type="button" id="installButton" hidden>
+            Install App
         </button>
     </header>
 
@@ -157,5 +162,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         document.body.classList.toggle("dark-mode");
     });
 </script>
+<script src="pwa.js"></script>
 </body>
 </html>
